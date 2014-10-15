@@ -17,7 +17,7 @@
     */
     public function mksql($q ,$type){
       switch($q){
-        case : "where"
+        case : "SELECT"
           $sql = "SELECT * FROM `blog_users` WHERE";
           $i = 0;
           foreach($q as $name => $val){
@@ -27,6 +27,17 @@
           }
         break;
       }
+    }
+    
+    /**
+     *mysql::query GETuser()*
+     
+     @prame array $q 
+    */
+    public function GETuser($q){
+      global $condb;
+      $sql = $this->mksql($q,"SELECT");
+      return $condb->query($sql);
     }
   }
 ?>
