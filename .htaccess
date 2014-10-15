@@ -1,0 +1,36 @@
+# .htaccess mod_rewrite
+# 14pixel.com
+
+RewriteEngine On 
+Options +FollowSymLinks -MultiViews
+
+
+RewriteCond %(REQUEST_FILENAME) !-d
+RewriteCond %(REQUEST_FILENAME) !-f
+RewriteCond %(REQUEST_FILENAME) !-1
+
+
+
+RewriteRule .*.js - [L]
+RewriteRule .*.php - [L]
+RewriteRule .*.css - [L]
+RewriteRule .*.jpg - [L]
+RewriteRule .*.png - [L]
+RewriteRule .*.gif - [L]
+RewriteRule .*.html - [L]
+RewriteRule .*.jpeg - [L]
+RewriteRule .*.jpg - [L]
+RewriteRule .*.JPG - [L]
+RewriteRule .*.JPEG - [L]
+RewriteRule .*.PNG - [L]
+
+
+
+RewriteRule ^article/([A-Za-z-][A-Za-z-])/([0-9]+)/([^/.]+)?$ topic.php?lang=$1&id=$2&title=$3   [L,QSA,NC]
+RewriteRule ^Category/([A-Za-z-][A-Za-z-])/([0-9]+)/([^/.]+)?$ cat.php?lang=$1&cat=$2&title=$3   [L,QSA,NC]
+
+RewriteEngine On
+RewriteCond %{HTTP_HOST} !^www\.
+RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
+
+#ErrorDocument 404 404.php

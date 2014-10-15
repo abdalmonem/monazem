@@ -1,0 +1,35 @@
+﻿
+
+
+
+
+
+
+.buble{
+width:100px;
+height:100px;
+-webkit-animation:buble 6s linear infinite;
+animation:buble 6s linear infinite;
+position:fixed;
+}
+
+
+@-webkit-keyframes buble{
+from{ transform:rotate(0deg); -ms-transform:rotate(0deg); -webkit-transform:rotate(0deg); }
+to { transform:rotate(360deg); -ms-transform:rotate(360deg); -webkit-transform:rotate(360deg); }
+from{bottom:0;}
+to{bottom:100%;}
+from{right:0;}
+to{right:100%;}
+}
+
+
+@keyframes buble{
+from{ transform:rotate(0deg); -ms-transform:rotate(0deg); -webkit-transform:rotate(0deg); }
+to { transform:rotate(360deg); -ms-transform:rotate(360deg); -webkit-transform:rotate(360deg); }
+
+from{bottom:0;}
+to{bottom:100%;}
+from{right:0;}
+to{right:100%;}
+} 

@@ -1,0 +1,581 @@
+<head>
+<link rel="stylesheet" href="style.css" />
+</head>
+
+
+<div class='editor_bar'>
+<div class='editor_bar_cell' id='h2'><img src='icons/bigtitle.png' /> </br> عنوان كبير</div>
+<div class='editor_bar_cell' id='h3'><img src='icons/smaltitle.png' /> </br> عنوان فرعي</div>
+<div class='editor_bar_cell' id='q'><img src='icons/qut.png' /> </br> اقتباس</div>
+<div class='editor_bar_cell' id='p'><img src='icons/text.png' /> </br> نص</div>
+<div class='editor_bar_cell' id='ul'><img src='icons/dotmen.png' /> </br> قائمة نقاط</div>
+<div class='editor_bar_cell' id='youtube_video'><img src='icons/youtubevideo.png' /> </br> مقطع يوتيوب</div>
+<div class='editor_bar_cell' id='add_image'><img src='icons/image.png' /> </br> ادراج صورة</div>
+<div class='editor_bar_cell' id='note'><img src='icons/note.png' /> </br> اضافة ملاحظة </div>
+<div class='editor_bar_cell' id='but'><img src='icons/surce.png' /> </br>اضافة زر</div>
+<div class='editor_bar_cell' id='sor'><img src='icons/surce.png' /> </br> اضافة مصدر</div>
+<div class='editor_bar_cell' id='htmlcode'><img src='icons/surce.png' /> </br>شفرة html</div>
+<div class='editor_bar_cell' id='htmlcode'><img src='icons/surce.png' /> </br>شفرة java</div>
+
+
+
+<div class='editor_bar_option' id='youtube_video_option' >
+<div class='editor_bar_option_one_cell' id='video_editor_bar_option_one_cell'>
+<input type='text' class='editor_bar_option_one_cell_input' id='video_form_input' placeholder='اضف رابط المقطع هنا مثال : www.youtube.com/...etc' />
+<button class='editor_bar_option_one_cell_button' id='video_submit_input'>اضافة مقطع</button>
+</div>
+</div>
+
+<div class='editor_bar_option' id='add_image_option' >
+
+<div class='editor_bar_option_cell_image' >
+<div class='editor_bar_option_one_cell' id='image_from_link_cell'>
+<input type='text' class='editor_bar_option_one_cell_input' id='image_from_link_input' placeholder='ادراج صورة من رابط || ضع ابط الصورة هنا واضغط علي زر اضافة' />
+<button class='editor_bar_option_one_cell_button' id='image_from_link_submit'>اضافة</button>
+</div>
+</div>
+
+
+<div class='editor_bar_option_cell_image' id='image_from_device' style='border-right:2px solid #999;'>
+<form id='image_from_device_form'>
+<input type='file' class='add_image_from_divice' value='اضافة صورة من الجهاز' name='image_from_device_file' id='image_from_device_file'>
+</form>
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class='r_menu' id='div_option'>
+<div class='r_menu_cel' id='r_menu_remove'>اذالة عنصر</div>
+</div>
+
+
+
+
+
+
+<div class='element_window' id='add_or_edit_url_window' style='display:none;'>
+<div class='element_window_box' id='add_or_edit_url' >
+<div class='element_window_box_title' id='add_or_edit_url'>انقر علي عدد الاعمدة الذي تريده</div>
+<div class='element_window_box_body' id='add_or_edit_url'>
+<div class='element_window_box_cell' id='add_or_edit_url_submit'>اضافة رابط</div>
+<div class='element_window_box_cell' id='add_or_edit_url_submit'>اضافة رابط</div>
+<div class='element_window_box_cell' id='add_or_edit_url_submit'>اضافة رابط</div>
+<div class='element_window_box_cell' id='add_or_edit_url_submit'>اضافة رابط</div>
+<div class='element_window_box_cell' id='add_or_edit_url_submit'>اضافة رابط</div>
+<div class='element_window_box_cell' id='add_or_edit_url_submit'>اضافة رابط</div>
+<div class='element_window_box_cell' id='add_or_edit_url_submit'>اضافة رابط</div>
+<div class='element_window_box_cell' id='add_or_edit_url_submit'>اضافة رابط</div>
+</div>
+</div>
+
+
+<div class='element_window_box' id='add_or_edit_url'>
+<div class='element_window_box_title' id='add_or_edit_url'>نوع الشفرة البرمجية التي ترغب باضافتها <div class='close_lightbox'></div> </div>
+<div class='element_window_box_body' id='add_or_edit_url'>
+<div class='element_window_box_cell' id='htmlcode'>html</div>
+<div class='element_window_box_cell' id='phpcode'>php</div>
+<div class='element_window_box_cell' id='csscode'>css</div>
+</div>
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class='editor' oncontextmenu='return false;' >
+<div class='text_area_details' >
+
+<div class='editor_buble' id='editor_buble' style='display:none;'>
+<div class='editor_buble_cel' id='add_del_bold'><img src='icons/bold.png' /></div>
+<div class='editor_buble_cel' id='add_del_underline'><img src='icons/underline.png' /></div>
+
+<div class='editor_buble_cel_color_set' id='add_del_color'>
+<div class='editor_buble_cel_color_set_cell' id='add_del_color_y' color='FCD208' style='background-color:#FCD208;'></div>
+<div class='editor_buble_cel_color_set_cell' id='add_del_color_r' color='E6433B' style='background-color:#E6433B;'></div>
+<div class='editor_buble_cel_color_set_cell' id='add_del_color_g' color='4BB748' style='background-color:#4BB748;'></div>
+<div class='editor_buble_cel_color_set_cell' id='add_del_color_b' color='4D8DCA' style='background-color:#4D8DCA;'></div>
+<div class='editor_buble_cel_color_set_cell' id='add_del_color_l' color='000000' style='background-color:#000000;'></div>
+</div>
+<div class='editor_buble_cel' id='add_del_link' ><img src='icons/link.png' /></div>
+<div class='editor_buble_cel' id='add_del_unlink' ><img src='icons/unlink.png' /></div>
+
+</div>
+
+
+</div>
+<div class='text_area' id='text_area' contentEditable="true" onpaste='handlepaste(this, event)'>
+<?php echo html_entity_decode($topic_area); ?>
+</div>
+
+</div>
+</div>
+
+
+<div class='text_area_option_panil' >
+<div class='text_area_details' >اعدادات المقال</div>
+<input class='text_area_details_title' value='<?php echo $title_area ?>' placeholder='عنوان المقال' id='post_title' />
+<input class='text_area_details_title' type='file' id='post_thumb' style='display:none;' name='post_thumb' value='<?php echo $thumb_area; ?>'/>
+<input style='display:none;' class='text_area_details_thumb'  id='post_thumb_val_saver' value='<?php echo $thumb_val; ?>'>
+<input type='button' class='text_area_details_thumb'  id='post_thumb_button' value='<?php echo $thumb_area; ?>'>
+<div class='uploadig_topic_img' id='contener_thumb_process_bar' style='display:none;float:right;width:80%;margin-right:10%;'><div class='uploadig_topic_img_inner' id="thumb_process_bar"></div></div>
+
+<select name='cat' class='text_area_details_cat' id='text_area_details_cat'/>
+	<?php  
+$Get_class->ca("*","id='$catug_area' ORDER By id DESC LIMIT 1");
+foreach($Get_class->CatsArray as $key=>$value){
+echo "<option value=".$value['id'].">".$value["title"];
+}
+$Get_class->ca("*","id!='' ORDER By id DESC LIMIT 4");
+foreach($Get_class->CatsArray as $key=>$value){
+echo "<option value=".$value['id'].">".$value["title"];
+}
+	?>
+	<option value='2'>
+ </select>
+ 
+ </br>
+.
+ </br>
+ </br>
+<?php echo one_tow_three_button("نوع الصفحة","موضوع","لسان","مخفي","page_type"); ?>
+ 
+<div class='editor_bar_buttons' id='post_now'>نشر</div>
+<div class='editor_bar_buttons' value='1' id='save_post'>حفظ تلقائي - يعمل</div>
+
+</div>
+
+<div class='divlopers_bar' style='display:none;'>
+divlopers</br></br>
+<div class='divlopers_bar_cel' id='ttt'>ttt</div>
+<div class='divlopers_bar_cel' id='yyy'>yyy</div>
+<div class='divlopers_bar_cel' id='uuu'>uuu</div>
+<div class='divlopers_bar_cel' id='iii'>iii</div>
+<div class='divlopers_bar_cel' id='ooo'>ooo</div>
+<div class='divlopers_bar_cel' id='ppp'>ppp</div>
+
+</div>
+
+<div class='status_bar' ></div>
+
+<script>
+
+$('.close_lightbox').click(function(){
+$('.element_window').hide();
+});
+
+/////////////////////////////// status_bar function /////////////////////////////////
+function StatusBar(content) {
+$('.status_bar').slideDown(222).delay("2000");
+$('.status_bar').html(content);
+$('.status_bar').slideUp(222);
+}
+
+
+/////////////////////////////// اذالة الاتش تي ام ال عن النسخ واللصق /////////////////////////////////
+function handlepaste(el, e) {
+document.execCommand('insertText', false, e.clipboardData.getData('text/plain'));
+e.preventDefault();
+}
+
+
+
+$('.text_area').each(function(){ this.contentEditable = false; });
+id_num = <?php echo rand(0,3452); ?>;
+all_Ides = '';
+
+
+
+$(document).bind("mousemove",function(){
+seltex = window.getSelection().toString();
+});
+
+
+
+			///////////////////////////////// tabs open and close /////////////////////////////////////////////////
+function tabs_animate(TabId){
+$("#"+TabId).animate({height:'toggle'},120);
+}
+
+$('#youtube_video,#add_image').click(function(){
+tabs_animate(this.id+"_option");
+});
+
+			///////////////////////////////// get image /////////////////////////////////////////////////
+$('#image_from_link_submit').click(function(){
+var Cel_Id = id_num++;
+Image_Url = $('#image_from_link_input').val();
+
+$("<div id="+Cel_Id+" class='image_cell'><div id='loading_img' style='width:300px;height:30px;line-height:0px;margin:30px auto;'><div class='logading' ></div>يجري سحب الصورة الي السيرفر</div></div>").appendTo('#text_area');
+
+$.post('actions/images_controls.php',{action:"tobicimg_fromurl",get_img_to_tobic:Image_Url},function(data){
+$('#'+Cel_Id).html("<img src=../"+data+"/>");
+});
+
+});	
+
+
+///////////////////////////////// upload image /////////////////////////////////////////////////
+$('#image_from_device_file').change(function(){
+Cel_Id = id_num++;
+var Cel_Id_Prog = "prog"+id_num++;
+$("<div id="+Cel_Id+" class='image_cell'><div id='loading_img' style='width:300px;height:30px;line-height:0px;margin:30px auto;'></div><div class='uploadig_topic_img'><div class='uploadig_topic_img_inner' id="+Cel_Id_Prog+" ></div></div></div>").appendTo('#text_area');
+
+uploadImage("image_from_device_file","actions/images_controls.php?form_name_attr=image_from_device_file&action=tobicimg",Cel_Id_Prog);
+});
+
+
+function uploadImage(elementId,PostToLink,showProsessOnDiv){
+var imageVale = document.getElementById(elementId).files[0];
+var ImgFormData = new FormData();
+ImgFormData.append(elementId,imageVale);
+var imghttpreq = new XMLHttpRequest();
+imghttpreq.upload.addEventListener("progress",progressHandler,false);
+imghttpreq.addEventListener("load",completeHandler,false);
+imghttpreq.addEventListener("error",errorHandler,false);
+imghttpreq.addEventListener("abort",abortHandler,false);
+imghttpreq.open("POST",PostToLink);
+imghttpreq.send(ImgFormData);
+
+
+function progressHandler(xx){
+var dataprocess = xx.loaded/xx.total*100;
+$("#"+showProsessOnDiv).css('width',dataprocess+"%");
+}
+function completeHandler(xx){
+var dataprocess = xx.target.responseText;
+$('#'+Cel_Id).html("<img src=../"+dataprocess+" />");
+}
+function errorHandler(xx){
+$('#'+Cel_Id).html("<div id=loading_img style=width:300px;height:80px;line-height:40px;margin:30px auto;>اخفقت عملية سحب الصورة الي السيرفر, تاكد من رابط الصورةانقر هنا لاذالة هذه الرسالة</div>");
+$('#'+Cel_Id).click(function(){ $(this).remove(); });
+}
+function abortHandler(xx){
+$('#'+Cel_Id).html("<div id=loading_img style=width:300px;height:80px;line-height:40px;margin:30px auto;>اخفقت عملية سحب الصورة الي السيرفر, تاكد من رابط الصورةانقر هنا لاذالة هذه الرسالة</div>");
+$('#'+Cel_Id).click(function(){ $(this).remove(); });
+}
+return false();	   
+}
+			
+			///////////////////////////////// upload thumbnel /////////////////////////////////////////////////
+			$('#post_thumb_button').click(function(){
+			document.getElementById("post_thumb").click();
+			$('#post_thumb').change(function(){
+			oldThumb = $("#post_thumb_val_saver").val();
+			uploadThumb("post_thumb","actions/images_controls.php?form_name_attr=post_thumb&action=changethumb&old_thumb="+oldThumb);
+			});
+			
+			
+
+function uploadThumb(elementId,PostToLink,showProsessOnDiv){
+var imageVale = document.getElementById(elementId).files[0];
+var ThumbFormData = new FormData();
+ThumbFormData.append(elementId,imageVale);
+var thumbhttpreq = new XMLHttpRequest();
+thumbhttpreq.upload.addEventListener("progress",progressHandlerthumb,false);
+thumbhttpreq.addEventListener("load",completeHandler,false);
+thumbhttpreq.addEventListener("error",errorHandler,false);
+thumbhttpreq.addEventListener("abort",abortHandler,false);
+thumbhttpreq.open("POST",PostToLink);
+thumbhttpreq.send(ThumbFormData);
+
+			function progressHandlerthumb(xxx){
+			var dataprocess = xxx.loaded/xxx.total*100;
+			$("#post_thumb_button").val("جاري الرفع");
+			$("#thumb_process_bar").css('width',dataprocess+"%");
+			$("#contener_thumb_process_bar").fadeIn();
+			}
+			function completeHandler(xxx){
+			var dataprocess = xxx.target.responseText;
+			$("#post_thumb_val_saver").val(dataprocess);
+			$("#post_thumb_button").val("تم الرفع بنجاح");
+			$("#post_thumb_button").delay("1000").val("تغيير الصورة المصغرة");
+			$("#post_thumb_button").css('background-color','#10CA04');
+			$("#contener_thumb_process_bar").fadeOut();
+			}
+			function errorHandler(xxx){
+			$("#post_thumb_button").val("فشل , حاول مجددا");
+			$("#post_thumb_button").css('background-color','#BF0000');
+			$("#contener_thumb_process_bar").fadeOut();
+			}
+			function abortHandler(xxx){
+			$("#post_thumb_button").css('background-color','#BF0000');
+			$("#contener_thumb_process_bar").fadeOut();
+			}
+			return false();
+			}
+			});
+			///////////////////////////////// elemants divs adder /////////////////////////////////////////////////
+
+function addEle(Element){
+var Cel_Id = id_num;
+$("<"+Element+" id="+Cel_Id+" contentEditable=true>انقر هنا لاضافة نص</"+Element+">").appendTo('#text_area');
+}
+
+			
+			///////////////////////////////// elemants divs adder /////////////////////////////////////////////////
+
+function addEleDev(ElementDev){
+var Cel_Id = id_num;
+$("<div class="+ElementDev+" id="+Cel_Id+" contentEditable=true>انقر هنا لاضافة نص</div>").appendTo('#text_area');
+}
+
+
+
+$('#h2,#h3,#p,#q').click(function(){
+Ele = this.id ;
+addEle(Ele);
+id_num++;
+return false();
+});
+
+$('#ul,#note,#sor,#htmlcode').click(function(){
+DevEle = this.id ;
+addEleDev(DevEle);
+id_num++;
+return false();
+});
+
+
+
+$('#but').click(function(){
+DevEle = this.id ;
+alert('gggg');
+id_num++;
+return false();
+});
+
+
+			///////////////////////////////// youtube video adder /////////////////////////////////////////////////
+$('#video_submit_input').click(function(){
+video_link = $('#video_form_input').val();
+
+///video_url_processed = video_link.replace("contains", "hello everyone"); 
+
+
+video_url_processed = "//youtube.com"+video_link.split(".com")[1];
+///alert(video_url_processed);
+var Div_Id = "AddedDiv_"+id_num;
+var Cel_Id = "AddedCel_"+id_num;
+var Del_Id = "AddedDel_"+id_num;
+$("<div class='topic_cell' id="+Cel_Id+"> <div class='topic_cell_del' id="+Del_Id+" ><img src='icons/del.png' /></div><div id="+Div_Id+" class='youtube_video' contentEditable=true> <iframe width='640' style='margin:0px auto;' height='360' src="+video_url_processed+" frameborder='0' allowfullscreen></iframe> </div></div>").appendTo('.text_area');
+
+
+});
+
+
+			//////////////////////////////// process and remove elements ///////////////////////////////////////////
+
+							$(document).mousemove(function(P){
+							pagey = P.pageY;
+							pagex = P.pageX;
+							pagex_mouseoption = P.pageX;
+							pagey_mouseoption = P.pageY-25;
+							$("#iii").html(pagey);
+							$("#ppp").html(pagex);
+							
+							});
+							
+							
+							
+							
+							
+
+$("#text_area").mousemove(function(event){
+///////////////////get sellected text
+if(
+ $(event.target).attr('id') !=="add_del_color" &
+ $(event.target).attr('id') !=="div_option" &
+ $(event.target).attr('id') !=="r_menu_remove" &
+ $(event.target).attr('id') !=="editor_buble" &
+ $(event.target).attr('id') !=="text_area" &
+ $(event.target).attr('id') !=="add_del_color_y" &
+  $(event.target).attr('id') !=="add_del_color_r" &
+   $(event.target).attr('id') !=="add_del_color_g" &
+    $(event.target).attr('id') !=="add_del_color_b" &
+ $(event.target).attr('id') !=="add_del_color_l" &
+ $(event.target).attr('id') !=="add_del_underline" & $(event.target).attr('id') !=="add_del_bold" & $(event.target).attr('id') !==""){
+clicked = $(event.target).attr('id');
+return false();
+}
+
+		  
+
+$("#"+clicked).mouseup(function(){
+Selectedtext = window.getSelection().toString();
+ buble_width    =  parseInt($('.text_area').offset().left);
+ buble_height   =  parseInt($('.text_area').offset().top);
+if(Selectedtext !==''){
+$('#editor_buble').css('marginTop',pagey-buble_height+10+'px');
+$('#editor_buble').css('marginLeft',pagex-buble_width-130+'px'); 
+$('#editor_buble').fadeIn(2);
+}else{
+$('#editor_buble').fadeOut(2);
+}
+return false();
+});
+
+
+
+
+$("#"+clicked).mousemove(function(Mouse_Click_Position_In_Dev){
+var div_width =  parseInt($(this).offset().left);
+var div_height=  parseInt($(this).offset().top);
+div_drag_posi =  Mouse_Click_Position_In_Dev.pageX-div_width;
+div_heig_posi =  Mouse_Click_Position_In_Dev.pageY-div_height;
+$(this).css('border-right','3px solid #BF0000');
+///$("#yyy").html(ttt);
+
+ 
+
+if(div_drag_posi > 570){
+$(this).css('cursor','move');
+$(function(){
+$( ".text_area" ).sortable({revert: true });
+$( ".text_area" ).sortable('enable');
+
+$(this).draggable({
+connectToSortable: ".text_area",
+helper: "original",
+revert: "invalid"
+});
+$( ".text_area" ).disableSelection();
+return false();
+});	
+}else{
+$( ".text_area" ).sortable('disable');
+$(this).css('cursor','default');
+$( ".text_area" ).enableSelection();
+}
+return false();
+});	
+
+
+///// اذالة الحافة اليمين
+$("#" + clicked).mouseout(function(){$(this).css('border',''); return false(); });	
+
+        /////////////////////////target text on click 
+$("#" + clicked).focus(function(){
+div_text = $(this).html();
+if(div_text == "انقر هنا لاضافة نص"){$this.off("mouseup"); document.execCommand('selectAll',false,null); }
+return false();
+});		
+
+
+$("#" + clicked).bind('contextmenu', function(){
+Selectedtext = window.getSelection().toString();
+
+$("#div_option").css('margin-left',pagex_mouseoption);
+$("#div_option").css('margin-top',pagey_mouseoption);
+$("#div_option").show();
+
+
+///++++++////++++++//// delet alement
+$("#r_menu_remove").mousedown(function(){
+
+if($("#"+clicked+":has(img)").length > 0){
+Img_wel_remove_link = $("#"+clicked).children("img").attr("src");
+
+
+$.post('actions/images_controls.php',{remove_img_from_topic:Img_wel_remove_link},function(data){
+$("#"+clicked).html(data); 
+return false();
+});
+
+
+}
+
+$("#" + clicked).remove();
+return false();
+});
+
+
+return false();
+});
+
+$(document).mousedown(function(){ $('.editor_buble').fadeOut(2);$("#div_option").fadeOut(0);return false();});
+$(document).keydown(function(){ $('.editor_buble').fadeOut(2);$("#div_option").fadeOut(0);return false();});
+
+/*
+////////////////// show curcur here
+$("#" + clicked).click(function(){
+///alert(clicked);
+$(this).css('border-bottom','2px solid #DD5924');
+$(this).css('border-top','0px solid #DD5924');
+$(this).css('border-right','0px solid #DD5924');
+$(this).css('border-left','0px solid #DD5924');
+$(this).css('border-style','dashed');
+
+$("#" + clicked).focusout(function(){
+$(this).css('border','0px solid #DD5924');
+});		
+
+});		
+*/
+
+
+///////////////// drag and drop //////////////////
+/*
+$(this).mousedown(function(){
+dad = $(function(){
+$( ".text_area" ).sortable({
+revert: true
+});
+$(this).draggable({
+connectToSortable: ".text_area",
+helper: "clone",
+revert: "invalid"
+});
+$( ".text_area" ).disableSelection();
+});		
+});		
+$(this).mouseup(function(){
+dad = "ff";
+});		
+dad();
+*/
+
+return false();
+
+ });
+
+
+
+function BoldIt() {document.execCommand ('bold',false, null); return false(); }
+
+function underlineIt() { document.execCommand ('underline', false, null); return false(); }
+
+function colorIt(colorCode) { document.execCommand ('foreColor', false, "#"+colorCode); return false(); }
+
+function linkIt(linkUrl){  document.execCommand("Createlink", false, linkUrl); return false(); }
+
+function unlinkIt(){  document.execCommand("unlink", false,false); return false(); }
+
+
+$("#add_del_bold").mousedown(function(){BoldIt();return false();});
+
+$("#add_del_underline").mousedown(function(){ underlineIt();return false(); });
+
+$("#add_del_color_y,#add_del_color_r,#add_del_color_g,#add_del_color_b,#add_del_color_l").mousedown(function(){
+var color = $(this).attr("color"); colorIt(color); return false(); });
+
+$("#add_del_link").mousedown(function(){ var urlp=prompt("What is the link:","http://"); linkIt(urlp); return false();});
+
+$("#add_del_unlink").mousedown(function(){unlinkIt(); return false();});
+
+
+ 
+</script>

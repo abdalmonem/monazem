@@ -1,0 +1,211 @@
+﻿
+
+<div class='editor_bar'>
+<div class='editor_bar_cell' id='big_title'><img src='icons/bigtitle.png' /> </br> عنوان كبير</div>
+<div class='editor_bar_cell' id='small_title'><img src='icons/smaltitle.png' /> </br> عنوان فرعي</div>
+<div class='editor_bar_cell' id='quat'><img src='icons/qut.png' /> </br> اقتباس</div>
+<div class='editor_bar_cell' id='text'><img src='icons/text.png' /> </br> نص</div>
+<div class='editor_bar_cell' id='dot_menu'><img src='icons/dotmen.png' /> </br> قائمة نقاط</div>
+<div class='editor_bar_cell' id='youtube_video'><img src='icons/youtubevideo.png' /> </br> مقطع يوتيوب</div>
+<div class='editor_bar_cell' id='add_image'><img src='icons/image.png' /> </br> ادراج صورة</div>
+
+
+
+<div class='editor_bar_buttons' id='post_now'>نشر</div>
+<div class='editor_bar_buttons' id='prev_now'>معاينة</div>
+
+
+
+<div class='editor_bar_option' id='youtube_video_option' >
+<div class='editor_bar_option_one_cell' id='video_editor_bar_option_one_cell'>
+<input type='text' class='editor_bar_option_one_cell_input' id='video_form_input' placeholder='اضف رابط المقطع هنا مثال : www.youtube.com/...etc' />
+<button class='editor_bar_option_one_cell_button' id='video_submit_input'>اضافة مقطع</button>
+</div>
+</div>
+
+<div class='editor_bar_option' id='add_image_option' >
+
+<div class='editor_bar_option_cell_image' >
+<div class='editor_bar_option_one_cell' id='image_from_link_cell'>
+<input type='text' class='editor_bar_option_one_cell_input' id='image_from_link_input' placeholder='ادراج صورة من رابط || ضع ابط الصورة هنا واضغط علي زر اضافة' />
+<button class='editor_bar_option_one_cell_button' id='image_from_link_submit'>اضافة</button>
+</div>
+</div>
+
+
+<div class='editor_bar_option_cell_image' id='image_from_device' style='border-right:2px solid #999;'>
+<form id='image_from_device_form'>
+<input type='file' class='add_image_from_divice' value='اضافة صورة من الجهاز' id='image_from_device_file'>
+</form>
+</div>
+
+</div>
+
+
+</div>
+
+<div class='editor'>
+<div class='text_area_details' >
+
+</div>
+<div class='text_area' >
+
+</div>
+
+</div>
+
+</div>
+
+<div class='divlopers_bar' style='display:none;'>
+divlopers</br></br>
+<div class='divlopers_bar_cel' id='ttt'>ttt</div>
+<div class='divlopers_bar_cel' id='yyy'>yyy</div>
+<div class='divlopers_bar_cel' id='uuu'>uuu</div>
+<div class='divlopers_bar_cel' id='iii'>iii</div>
+<div class='divlopers_bar_cel' id='ooo'>ooo</div>
+<div class='divlopers_bar_cel' id='ppp'>ppp</div>
+
+</div>
+
+<script>
+
+	
+$('.text_area').each(function(){ this.contentEditable = false; });
+id_num = 0;
+all_Ides = '';
+
+
+
+$(document).bind("mousemove",function(){
+seltex = window.getSelection().toString();
+});
+
+
+
+			///////////////////////////////// tabs open and close /////////////////////////////////////////////////
+function tabs_animate(TabId){
+$("#"+TabId).animate({height:'toggle'},120);
+}
+
+$('#youtube_video,#add_image').click(function(){
+tabs_animate(this.id+"_option");
+});
+
+			///////////////////////////////// get image /////////////////////////////////////////////////
+$('#image_from_link_submit').click(function(){
+Image_Url = $('#image_from_link_input').val()
+var Div_Id = "AddedDiv_"+id_num;
+var Cel_Id = "AddedCel_"+id_num;
+var Del_Id = "AddedDel_"+id_num;
+$("<div class='topic_cell' id="+Cel_Id+"> <div class='topic_cell_del' id="+Del_Id+" ><img src='icons/del.png' /></div><div id="+Div_Id+" class='image_cell' > <img src="+Image_Url+" /> </div></div>").appendTo('.text_area');
+
+});
+			
+			
+			///////////////////////////////// elemants divs adder /////////////////////////////////////////////////
+
+function addEle(The_Div){
+var Div_Id = "AddedDiv_"+id_num;
+var Cel_Id = "AddedCel_"+id_num;
+var Del_Id = "AddedDel_"+id_num;
+$("<div class='topic_cell' id="+Cel_Id+"> <div class='topic_cell_del' id="+Del_Id+" ><img src='icons/del.png' /></div><div id="+Div_Id+" class="+The_Div+" contentEditable=true> انقر هنا لاضافة نص </div></div>").appendTo('.text_area');
+}
+
+$('#big_title,#small_title,#quat,#text,#dot_menu').click(function(){
+Div_Name = this.id ;
+addEle(Div_Name);
+id_num++;
+});
+
+
+			///////////////////////////////// youtube video adder /////////////////////////////////////////////////
+$('#video_submit_input').click(function(){
+video_link = $('#video_form_input').val();
+
+///video_url_processed = video_link.replace("contains", "hello everyone"); 
+
+
+video_url_processed = "//youtube.com"+video_link.split(".com")[1];
+///alert(video_url_processed);
+var Div_Id = "AddedDiv_"+id_num;
+var Cel_Id = "AddedCel_"+id_num;
+var Del_Id = "AddedDel_"+id_num;
+$("<div class='topic_cell' id="+Cel_Id+"> <div class='topic_cell_del' id="+Del_Id+" ><img src='icons/del.png' /></div><div id="+Div_Id+" class='youtube_video' contentEditable=true> <iframe width='640' style='margin:0px auto;' height='360' src="+video_url_processed+" frameborder='0' allowfullscreen></iframe> </div></div>").appendTo('.text_area');
+
+
+});
+
+
+			//////////////////////////////// process and remove elements ///////////////////////////////////////////
+
+							$(document).mousemove(function(P){
+							pagey = P.pageY;
+							$("#iii").html(pagey);
+							});
+							
+							
+$('.text_area').mousemove(function(event){
+clicked    = $(event.target).attr('id');
+Serial_num = clicked.match(/(\+|\-){0,1}[0-9.]{1,}/g);
+$("#" + clicked).keydown(function(){
+///alert(clicked);
+///$(this).css('border','1px solid #ccc');
+
+});		
+
+/*
+تحريك الصناديق 
+			$("#AddedCel_" + Serial_num).mousemove(function(Mouse_Click_Position_In_Dev){
+		   $(this).css('border','0px solid #000'); 
+		   $("#AddedDel_" + Serial_num).fadeIn(100);
+		   ttt = Mouse_Click_Position_In_Dev.pageY;
+		   div_margin =  $(this).css("margin-top").replace("px", "");
+		   var div_top    =  parseInt($(this).offset().top);
+		   div_hight  =  parseInt($(this).height()/2);
+		 $("#yyy").html(this.id);
+					   
+		   
+		   
+					   $(document).mousedown(function(MousePosition){
+					   Is_Moving_Now = true;
+					   
+					   });
+					   $(document).mouseup(function(MousePosition){
+						Is_Moving_Now = false;
+						var div_top    =  parseInt($("#AddedCel_" + Serial_num).offset().top);
+						$("#AddedCel_" + Serial_num).css('display','none ');
+						return false;
+						});
+					   
+					   
+					   $(document).mousemove(function(){
+					   
+					   if(Is_Moving_Now==true){
+					   Docheight = $(document).height();
+					   change_pos_now = pagey-div_top-div_hight;
+					   $("#ttt").html(ttt);
+
+					   $("#ooo").html(div_top);
+					   
+					   $("#uuu").html(change_pos_now);
+					   //alert(change_pos_now);
+					    $("#AddedCel_" + Serial_num).css('position','fixed');
+						$("#AddedCel_" + Serial_num).css('margin-top',change_pos_now+'px');		   
+						return false();
+						}else{
+						$("#AddedCel_" + Serial_num).css('position','relative ');
+						}
+						});
+						return false();
+
+		   });	   
+   return false();
+   
+   */
+ });
+
+
+
+///the post full code _ copy it to action page - that you want use on it
+///thepost = $('.text_area').html();
+</script>
