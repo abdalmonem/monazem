@@ -16,7 +16,17 @@
       @date : 9:32pm 
     */
     public function mksql($q ,$type){
-      
+      switch($q){
+        case : "where"
+          $sql = "SELECT * FROM `blog_users` WHERE";
+          $i = 0;
+          foreach($q as $name => $val){
+            $and = ($i==0) ? NULL : "AND";
+            $sql .= " {$name} = '{$val}'";
+            $i++;
+          }
+        break;
+      }
     }
   }
 ?>
