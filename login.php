@@ -58,7 +58,7 @@ echo "
 		$e = $c->real_escape_string($_GET["email"]);
 		$p = $c->real_escape_string($_GET["password"]);
 		$query = $c->GETuser(array("email"=>$e,"password"=>$p));
-		if(!$query->num_row)
+		if(!$query->num_rows)
 			echo "تاكد من المعلومات";
 		else{
 			$r = $query->fetch_array($q);
