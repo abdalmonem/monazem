@@ -1,7 +1,7 @@
 ﻿<?php
 SESSION_START();
-include "config.php";
-include("classes/blog_setting.php"); $allset = new allset(); $allset->bs();
+require_once"config.php";
+require_once("classes/blog_setting.php"); $allset = new allset(); $allset->bs();
 $sid = @$_SESSION['sid'];
 $sem = @$_SESSION['semail'];
 
@@ -74,7 +74,7 @@ foreach($Get_class->CatsArray as $key=>$value){
 $cat_id = $value["id"];
 $cat_title = $value["title"];
 echo'
-<a href= "'.$allset->blog_cat_links("ar",$cat_id,$cat_title).'"><div class="catog_cell">'.$value["title"].'</div> </a>
+<a href= "'.$Get_class->blog_cat_links("ar",$cat_id,$cat_title).'"><div class="catog_cell">'.$value["title"].'</div> </a>
 ';
 }
 

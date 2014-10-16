@@ -34,19 +34,6 @@ $this->allow_to_msg       = $qs2["allow_to_msg"];
 }
 
 
-function blog_links($para1,$lang,$id,$title){
-if(empty($title)){$title="غير معنون";}
-$link = $para1."/".$lang."/".$id."/".str_replace(" ","-",$title);
-return $link;
-}
-
-
-function blog_cat_links($lang,$id,$title){
-if(empty($title)){$title="غير معنون";}
-$cat_link = "Category/".$lang."/".$id."/".str_replace(" ","-",$title);
-$cat_link = "Category/".$lang."/".$id."/".str_replace(" ","-",$title);
-return $cat_link;
-}
 
 
 function user_set(){
