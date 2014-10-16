@@ -1,6 +1,7 @@
 ﻿<?php
 SESSION_START();
 include "../config.php";
+include "../classes/user.lib.php";
 
 
  
@@ -48,32 +49,27 @@ echo"
 </div>
 ";
 
-echo"
+echo "
 </div>";
 
 
-	if(isset($_POST['submit'])){
-		if($_POST['email'] == "" || $_POST['password'] == ""){
-			echo "Missing input field <br />
-			<meta http-equiv='Refresh' content='3'; URL=login.php' />";
+	if(!empty($_GET["password"]) && !empty($_GET["email"])){
+		$c = new user();
+		$e = $c->real_escape_string($_GET["email"]);
+		$p = $c->real_escape_string($_GET["password"]);
+		$query = $c->GETuser(array("email"=>$e,"password"=>$p));
+		if(!$query->num_row)
+			echo "تاكد من المعلومات";
+		else{
+			$r = $query->fetch_array($q);
+			$_SESSION['uid'] = $r['id'];
+			$_SESSION['em'] = $r['email'];
+			echo "تم تسجيل الدخول بنجاح";
 		}
-		$e = $_POST['email'];
-		$p = $_POST['password'];
-		echo"$e $p";
-		
-		$q= mysql_query("SELECT `id`, `email` FROM `blog_users` WHERE email='".$e."' && password='".$p."'");
-		if(!mysql_num_rows($q)){
-			echo "Input data not exist<br />";
-		}
-		$row = mysql_fetch_array($q);
-		$_SESSION['uid'] = $row['id'];
-		$_SESSION['em'] = $row['email'];
-		echo "Login successfully";
 	}
-	if(isset($_POST['email'])){$placeholder=$_POST["email"];}else{$placeholder="";}
 	echo "<form action='' method='post' >
-	<input type='text' name='email' value='$placeholder' />
-	<input type='text' name='password' value='' />
+	<input type='text' name='email' placeholder='email' />
+	<input type='text' name='password' placeholder='pass' />
 	<input type='submit' name='submit' value= 'submit' />		
 	</form>";
 
