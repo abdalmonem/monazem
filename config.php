@@ -1,7 +1,11 @@
 <?php
-$condb = new mysqli("localhost","root","") or die ("not connect");
-$seldb = $condb->select_db("blog",$condb) or die ("nooo icant con");
+$condb = new mysqli("localhost","root","","blog") or die ("not connect");
 
-$condb-query("set character_set_server='utf8'");
-$condb-query("set names 'utf8'");
+    if($condb->connect_error)
+    {
+    die('Connect Error:'.$condb->connect_error);
+    } 
+
+$condb->query("set character_set_server='utf8'");
+$condb->query("set names 'utf8'");
 ?>
