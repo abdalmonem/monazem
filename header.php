@@ -1,9 +1,14 @@
 ﻿<?php
-SESSION_START();
-require_once"config.php";
-require_once("classes/blog_setting.php"); $allset = new allset(); $allset->bs();
-$sid = @$_SESSION['sid'];
-$sem = @$_SESSION['semail'];
+	SESSION_START();
+	/*id session value*/ $sid = @$_SESSION['sid'];
+	/*email session value*/ $sem = @$_SESSION['semail'];
+			require_once"config.php";
+			require_once("classes/blog_setting.php");
+			require_once("classes/get_class.php");
+				$Get_class = new GetClass(); 
+				$allset = new allset();
+				$allset->bs();
+
 
 echo '
 <!DOCTYPE html>
@@ -46,8 +51,7 @@ die();
 
 ///طريقة رصف الرابط : echo $allset->blog_links("para1","ar","id","title");
 
-include("classes/get_class.php");
-$Get_class = new GetClass(); 
+
 
 
 echo'<div class="catog white_link">';

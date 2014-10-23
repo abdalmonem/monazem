@@ -17,7 +17,7 @@
     */
     public function mksql($q ,$type){
       switch($q){
-        case : "SELECT"
+        case "SELECT" :
           $sql = "SELECT * FROM `blog_users` WHERE";
           $i = 0;
           foreach($q as $name => $val){

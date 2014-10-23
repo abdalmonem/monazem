@@ -5,6 +5,8 @@ class GetClass{
 //////////////////////////// المواريث "مصفوفات للاستخدام خارج الكلاس"
 public $PostsArray;   /// مصفوفة المواضيع
 public $PostNumber;
+public $queryArray;
+public $query_num_rows;
 
 
 
@@ -26,6 +28,7 @@ return $cat_link;
 
 
 function po($rows="",$cond="",$do_you_need_pages="dont_show_pages"){
+global $condb;
 $PostsArray=[];
 
 
@@ -34,9 +37,9 @@ $PostsArray=[];
 			else{$show_pages_or_not=" ";}
 			
 			
-$Posts_query = mysql_query("SELECT $rows FROM topics WHERE $show_pages_or_not $cond");
-$Posts_num_rows = mysql_num_rows($Posts_query);
-while($Posts_fetch_array = mysql_fetch_array($Posts_query)){
+$Posts_query = $condb->query("SELECT $rows FROM topics WHERE $show_pages_or_not $cond");
+$Posts_num_rows = $Posts_query->num_rows;
+while($Posts_fetch_array = $Posts_query->fetch_array(MYSQLI_ASSOC)){
 $this->PostsArray[] = $Posts_fetch_array;
 }}
 
@@ -44,10 +47,11 @@ $this->PostsArray[] = $Posts_fetch_array;
 public $CatsArray;   /// مصفوفة التصنيفات
 public $CatNumber;
 function ca($rows="",$cond=""){
+global $condb;
 $CatsArray=[];
-$Cats_query = mysql_query("SELECT $rows FROM cats WHERE $cond");
-$Cats_num_rows = mysql_num_rows($Cats_query);
-while($Cats_fetch_array = mysql_fetch_array($Cats_query)){
+$Cats_query = $condb->query("SELECT $rows FROM cats WHERE $cond");
+$Cats_num_rows = $Cats_query->num_rows;
+while($Cats_fetch_array = $Cats_query->fetch_array(MYSQLI_ASSOC)){
 $this->CatsArray[] = $Cats_fetch_array;
 }}
 
@@ -55,10 +59,11 @@ $this->CatsArray[] = $Cats_fetch_array;
 public $CommentsArray;   /// مصفوفة التعليقات
 public $CommentsNumber;
 function co($rows="",$cond=""){
+global $condb;
 $CommentsArray=[];
-$Comments_query = mysql_query("SELECT $rows FROM comments WHERE $cond");
-$CommentsNumber = mysql_num_rows($Comments_query);
-while($Comments_fetch_array = mysql_fetch_array($Comments_query)){
+$Comments_query = $condb->query("SELECT $rows FROM comments WHERE $cond");
+$CommentsNumber = $Comments_query->num_rows;
+while($Comments_fetch_array = $Comments_query->fetch_array(MYSQLI_ASSOC)){
 $this->CommentsArray[] = $Comments_fetch_array;
 }}
 
@@ -67,10 +72,11 @@ $this->CommentsArray[] = $Comments_fetch_array;
 public $UsersArray;   /// مصفوفة الاعضاء
 public $UsersNumber;
 function us($rows="",$cond=""){
+global $condb;
 $UsersArray=[];
-$Users_query = mysql_query("SELECT $rows FROM blog_users WHERE $cond");
-$UsersNumber = mysql_num_rows($Users_query);
-while($Users_fetch_array = mysql_fetch_array($Users_query)){
+$Users_query = $condb->query("SELECT $rows FROM blog_users WHERE $cond");
+$UsersNumber = $Users_query->num_rows;
+while($Users_fetch_array = $Users_query->fetch_array(MYSQLI_ASSOC)){
 $this->UsersArray[] = $Users_fetch_array;
 }}
 
@@ -105,12 +111,29 @@ $this->result_number = count($Posts_function->PostsArray);
 }
 
 
+
+
+
+///query function
+public function qufu($rows="",$from,$cond=""){
+global $condb;
+$queryArray=[];
+
+$query_start    = $condb->query("SELECT $rows from $from $cond");
+$query_num_rows = $query_start->num_rows;
+while($query_fetch_array = $query_start->fetch_array(MYSQLI_ASSOC)){
+$this->queryArray[] = $query_fetch_array;
 }
 
-/*get posts
+}
+}
+
+/*
 $Posts_function = new GetClass();
-$Posts_function->po("*","id='1' ORDER By id DESC LIMIT 4");
-print_r($Posts_function->PostsArray);
+$Posts_function->qufu("*","topics","");
+foreach($Posts_function->queryArray as $key=>$d){
+echo $d['id']."</br></br></br></br>";
+}
 */
 
 /*get cats

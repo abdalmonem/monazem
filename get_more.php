@@ -7,7 +7,7 @@ $Get_class = new GetClass();
 if(isset($_GET['type'])){
 if($_GET['type'] == "topic"){
 
-if(isset($_GET['cat'])){$query_start = "id!='' && cat='".$_GET['cat']."' ";}else{$query_start = "id!=''";}
+if(isset($_GET['cat'])){$query_start = "cat='".$_GET['cat']."' ";}else{$query_start = "id!=''";}
 
 $Started_Result_Ftom = $_GET["last_result"];
 $Get_class->GET_TOPIC_CELL("$query_start ORDER By id Desc LIMIT $Started_Result_Ftom,7");

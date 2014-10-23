@@ -70,6 +70,19 @@ function backup_tables($host,$user,$pass,$name,$tables = '*')
 }
 
 */
-highlight_string("<?php <html>knv</html> ?>");
 
+include("config.php");
+echo"
+<Form action='' method='post'' >
+<input name='email' />
+<input type='submit' />
+</form>
+";
+
+if(isset($_POST['email'])){
+$pm = $_POST['email'];
+$q1 = $condb->query("SELECT * FROM blog_users WHERE email='$pm' ");
+$q2 = $q1->fetch_array(MYSQLI_ASSOC);
+echo $q2["email"];
+}
 ?>

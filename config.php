@@ -1,6 +1,7 @@
 <?php
 $condb = new mysqli("localhost","root","","blog") or die ("not connect");
 
+
     if($condb->connect_error)
     {
     die('Connect Error:'.$condb->connect_error);

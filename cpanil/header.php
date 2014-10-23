@@ -3,7 +3,6 @@ ob_start();
 SESSION_START();
 $sid = @$_SESSION['sid'];
 $sem = @$_SESSION['semail'];
-if(!isset($sid)){ header("location:index.php"); die();}
 include "../config.php";
 include("../classes/get_class.php");
 $Get_class = new GetClass(); 
