@@ -29,6 +29,9 @@ return $cat_link;
 
 function po($rows="",$cond="",$do_you_need_pages="dont_show_pages"){
 global $condb;
+$rows = $condb->real_escape_string((gettype($rows) == "string") ? $rows : "");
+$cond = $condb->real_escape_string((gettype($cond) == "string") ? $cond : "");
+$do_you_need_pages = $condb->real_escape_string((gettype($do_you_need_pages) == "string") ? $do_you_need_pages : "");
 $PostsArray=[];
 
 
@@ -117,6 +120,10 @@ $this->result_number = count($Posts_function->PostsArray);
 ///query function
 public function qufu($rows="",$from,$cond=""){
 global $condb;
+$rows = $condb->real_escape_string((gettype($rows) == "string") ? $rows : "");
+$from = $condb->real_escape_string((gettype($from) == "string") ? $from : "");
+$cond = $condb->real_escape_string((gettype($cond) == "string") ? $cond : "");
+
 $queryArray=[];
 
 $query_start    = $condb->query("SELECT $rows from $from $cond");
