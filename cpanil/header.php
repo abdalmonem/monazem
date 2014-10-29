@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 ob_start();
 SESSION_START();
 $sid = @$_SESSION['sid'];
@@ -6,7 +6,7 @@ $sem = @$_SESSION['semail'];
 include "../config.php";
 include("../classes/get_class.php");
 $Get_class = new GetClass(); 
-
+header("Content-Type: text/html;charset=\"utf-8\"")
 include("../classes/blog_setting.php");
 $allset=new allset(); 
 $allset->bs();
