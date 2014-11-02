@@ -36,13 +36,15 @@ if($_GET["action"]=="login"){
 if(isset($_POST["logbutton"])){
 $mail = $_POST["email"];
 $pass = $_POST["password"];
-$q1 = mysql_query("SELECT * FROM blog_users WHERE email='$mail' && password='$pass' limit 1");
-if(mysql_num_rows($q1)=="1"){
+$q1 = $condb->query("SELECT * FROM blog_users WHERE email='$mail' && password='$pass' limit 1");
+if($q1->num_rows=="1"){
 echo"sucss!!";
-$fuser = mysql_fetch_array($q1);
+while($fuser = $q1->fetch_array(MYSQLI_ASSOC)){
 
 $_SESSION["sid"]    = $fuser["id"];
 $_SESSION["semail"] = $fuser["email"];
+
+}
 
 header("location:posts.php?page=all");
 
@@ -90,8 +92,8 @@ $mail   = $_POST["email"];
 $name   = $_POST["name"];
 $pass   = $_POST["password"];
 $repass = $_POST["repassword"];
-$q1     = mysql_query("SELECT * FROM blog_users WHERE email='$mail' limit 1");
-if(mysql_num_rows($q1)>0){
+$q1     = $condb->query("SELECT * FROM blog_users WHERE email='$mail' limit 1");
+if($q1->num_rows=="1"){
 echo"
 <div class='log_notie'>
 عذرا هذا البريد متواجد من قبل |
@@ -103,7 +105,7 @@ echo"
 if(empty($mail) OR empty($name) OR empty($pass) OR empty($repass)){$reg_err = "انت لم تقم بملاء جميع الحقول , رحاء حاول مجددا";}
 else if(!empty($mail) AND !empty($name) AND !empty($pass) AND !empty($repass) && $pass!==$repass){$reg_err = "تاكد من تطابق كلمتي السر بالاسفل";}
 else if(!empty($mail) AND !empty($name) AND !empty($pass) AND !empty($repass) && $pass==$repass){$reg_err = "تمام";
-mysql_query("INSERT INTO blog_users 
+$condb->query("INSERT INTO blog_users 
 (name,email,password,rank,date)
 VALUES
 ('$name','$mail','$pass','1','$d')

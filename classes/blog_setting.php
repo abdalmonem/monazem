@@ -13,6 +13,12 @@ public $check_comments;
 public $blog_state;
 public $allow_to_msg;
 
+public $usEmail;
+public $usPassword;
+public $usName;
+public $usAbout;
+public $usState;
+public $usRank;
 
 
 
@@ -38,13 +44,10 @@ $this->allow_to_msg       = $qs2["allow_to_msg"];
 
 
 
-
-public function user_set(){
-$sid = $_SESSION['sid'];
-
+function user_set(){
 global $condb;
-$UsSet             = $condb->query("SELECT * FROM blog_users WHERE id='1'");
-$UsSet2            = $UsSet->fetch_array(MYSQLI_ASSOC);
+$UsSet             = $condb->query("SELECT * FROM blog_users WHERE id='".$_SESSION['sid']."' ");
+while($UsSet2            = $UsSet->fetch_array(MYSQLI_ASSOC)){
 
 $this->usEmail           = $UsSet2["email"];
 $this->usPassword        = $UsSet2["password"];
@@ -52,6 +55,7 @@ $this->usName            = $UsSet2["name"];
 $this->usAbout           = $UsSet2["about"];
 $this->usState           = $UsSet2["state"];
 $this->usRank            = $UsSet2["rank"];
+}
 
 }
 

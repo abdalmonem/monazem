@@ -81,7 +81,6 @@ $(".speedmenu").html("<div class=logading style=margin:300px auto;></div>");
 <div class="catog_cell">اعدادات حساب</div>
 <a href="comments.php"><div class="catog_cell">التعليقات</div></a>
 ';
-
 if($allset->usRank=="0"){
 echo'
 <div class="catog_cell" id="show_all_cats" style="width:25px;"><img src="../img/down_tringle.png" style="width:22px;float:left;margin:14px 0px;"/>

@@ -7,12 +7,12 @@ $Get_class = new GetClass();
 if(isset($_GET['type'])){
 if($_GET['type'] == "topic"){
 
-if(isset($_GET['cat'])){$query_start = "cat='".$_GET['cat']."' ";}else{$query_start = "id!=''";}
+if(isset($_GET['cat'])){$query_start = "cat='".$_GET['cat']."' ";}else{$query_start = "id!='' &&";}
 
 $Started_Result_From = $_GET["last_result"];
 
 
-	$Get_class->qufu("*","topics","WHERE $query_start ORDER By id Desc LIMIT $Started_Result_From,7");
+	$Get_class->qufu("*","topics","WHERE $query_start status='1' ORDER By id Desc LIMIT $Started_Result_From,7");
 		foreach($Get_class->queryArray as $key=>$get_posts){
 		///$theeprem_posts_link  = $Get_class->blog_links("article","ar",$premum_3_posts["id"],$premum_3_posts["title"]);
 		$all_posts_id = $get_posts["id"];
