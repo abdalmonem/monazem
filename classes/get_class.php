@@ -20,7 +20,6 @@ return $link;
 function blog_cat_links($lang,$id,$title){
 if(empty($title)){$title="غير معنون";}
 $cat_link = "Category/".$lang."/".$id."/".str_replace(" ","-",$title);
-$cat_link = "Category/".$lang."/".$id."/".str_replace(" ","-",$title);
 return $cat_link;
 }
 
@@ -85,54 +84,49 @@ $this->UsersArray[] = $Users_fetch_array;
 
 
 
-
+/*
 /// سحب موضوع كامل مع التصميم
 function GET_TOPIC_CELL($query_standerd){
 $Posts_function = new GetClass();
-$Posts_function->po("*",$query_standerd);
+$Posts_function->po("*","topics",$query_standerd);
 foreach($Posts_function->PostsArray as $key=>$all_posts){
 $all_posts_id = $all_posts["id"];
 $all_posts_title = $all_posts["title"];
 $all_posts_thumb = $all_posts["thumb"];
 $all_posts_thumb = $all_posts["thumb"];
 $all_posts_link  = $Posts_function->blog_links("article","ar",$all_posts_id,$all_posts_title);
-echo"
-<a href='$all_posts_link' itemprop='$all_posts_link'>
-<div class='posts_box_post_cell' itemscope itemtype='http://schema.org/Article' >
-<div class='posts_box_post_cell_detils_since'>منذ شهر <img src='img/clock.png' /> </div>
-<div class='posts_box_post_cell_thumb' style='background-image:url($all_posts_thumb);background-size:cover; background-repeat: no-repeat; background-position:center;'></div>
-<meta itemprop='image' content='$all_posts_thumb'>
-<div class='posts_box_post_cell_detils'>
-<div itemprop='name' class='posts_box_post_cell_detils_title'>$all_posts_title</div>
-</div>
-</div>
-</a>
-";
+
 
 }
 $this->result_number = count($Posts_function->PostsArray);
 }
-
-
-
+*/
 
 
 ///query function
-public function qufu($rows="",$from,$cond=""){
-global $condb;
-$rows = $condb->real_escape_string((gettype($rows) == "string") ? $rows : "");
-$from = $condb->real_escape_string((gettype($from) == "string") ? $from : "");
-$cond = $condb->real_escape_string((gettype($cond) == "string") ? $cond : "");
-
+function qufu($rows,$from,$cond){
 $queryArray=[];
+global $condb;
+
+/*
+$rows = (gettype($rows)  == "string") ? $condb->real_escape_string($rows)  :  $rows=" ";
+$from = (gettype($from)  == "string") ? $condb->real_escape_string($from)  :  $from =" ";
+$cond = (gettype($cond)  == "string") ? $cond        
+
+			////$rows = $condb->real_escape_string((gettype($rows) == "string") ? $rows : ""); الكود يحوي اخطاء/////
+			
+ لا يمكن تامين هذه الفنكشن هكذا لانها تحوي علامات تنصيص , 
+وهي ليست لعمليات الادخال بل السحب , ولا يمكن الوصول اليها بغلنسبة للمستخدمين ل
+*/
 
 $query_start    = $condb->query("SELECT $rows from $from $cond");
 $query_num_rows = $query_start->num_rows;
-while($query_fetch_array = $query_start->fetch_array(MYSQLI_ASSOC)){
-$this->queryArray[] = $query_fetch_array;
+while($queryfetch = $query_start->fetch_array(MYSQLI_ASSOC)){
+$this->queryArray[]=$queryfetch;
+}
 }
 
-}
+
 }
 
 /*

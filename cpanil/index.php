@@ -1,7 +1,7 @@
 <?php
 ob_start();
 SESSION_START();
-include "../config.php";
+include("../config.php");
 $d = time();
 echo '
 <!DOCTYPE html>

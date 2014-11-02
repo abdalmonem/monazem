@@ -21,7 +21,7 @@ $tid = $_GET["tid"];
 $if_edit_id_of_topic = $_GET["tid"];
 $state = "0";
 $action="edit";
-$Get_class->po("*","id='$tid' ORDER BY id limit 1");
+$Get_class->qufu("*","topics","id='$tid' ORDER BY id limit 1");
 foreach($Get_class->PostsArray as $key=>$editpost){
 $title_area = $editpost["title"];
 $topic_area = $editpost["post"];
@@ -138,7 +138,7 @@ save_post(thepost_before_process,thetitl,thecatg,thethum,"<?php echo $action; ?>
 $('#text_area_details_cat').css('border','1px solid #ccc');
 $('#text_area_details_title').css('border','1px solid #ccc');
 }
-window.location.replace("posts.php");
+$('.text_area').html(data);
 
 
 });
@@ -146,7 +146,7 @@ window.location.replace("posts.php");
 
 function save_post(Gtopic,Gtitle,Gcat,Gtumb,Gaction,Gifedit,Gsavestate){
 $.post('actions/save_post.php',{topic:Gtopic,title:Gtitle,cat:Gcat,thumb:Gtumb,action:Gaction,gid:Gifedit,state:Gsavestate,type:get_my_choise},function(data){
-///$('.text_area').html(data);
+$('.text_area').html(data);
 });
 }
 

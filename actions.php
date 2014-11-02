@@ -12,11 +12,11 @@ $email   = $_GET["email"];
 $comment = $_GET["comment"];
 $topic   = $_GET["topic"];
 
-$q1 = mysql_query("SELECT check_comments from setting"); $q2 = mysql_fetch_array($q1); $q3 = $q2["check_comments"];
+$q1 = $condb->query("SELECT check_comments from setting"); $q2 = $q1->fetch_array(MYSQLI_ASSOC); $q3 = $q2["check_comments"];
 
 if($q3=="0"){
-mysql_query("INSERT INTO comments (name,email,comment,topic,date,state) VALUES('$name','$email','$comment','$topic','$d','0')");
-mysql_query("UPDATE topics SET comnum=comnum+1 WHERE id='$topic' ");
+$condb->query("INSERT INTO comments (name,email,comment,topic,date,state) VALUES('$name','$email','$comment','$topic','$d','0')");
+$condb->query("UPDATE topics SET comnum=comnum+1 WHERE id='$topic' ");
 $gravatar_link = 'http://www.gravatar.com/avatar/' . md5($email) . '?s=150';
   
 		echo"
@@ -37,8 +37,8 @@ $gravatar_link = 'http://www.gravatar.com/avatar/' . md5($email) . '?s=150';
 		</script>
 		";
 }else{
-mysql_query("INSERT INTO comments (name,email,comment,topic,date,state) VALUES('$name','$email','$comment','$topic','$d','1')");
-mysql_query("UPDATE topics SET comnum=comnum+1 WHERE id='$topic' ");
+$condb->query("INSERT INTO comments (name,email,comment,topic,date,state) VALUES('$name','$email','$comment','$topic','$d','1')");
+$condb->query("UPDATE topics SET comnum=comnum+1 WHERE id='$topic' ");
 $gravatar_link = 'http://www.gravatar.com/avatar/' . md5($email) . '?s=150';
   
 		echo"

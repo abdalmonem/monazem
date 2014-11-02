@@ -1,6 +1,5 @@
 ﻿<?php
 //include("../config.php");
-
 class allset{
 public $blog_name;
 public $url;
@@ -15,7 +14,10 @@ public $blog_state;
 public $allow_to_msg;
 
 
+
+
 public function bs(){
+
 global $condb;
 $qs1                      = $condb->query("SELECT * FROM setting WHERE id='1' ORDER BY id desc limit 1");
 while($qs2                = $qs1->fetch_array(MYSQLI_ASSOC)){
@@ -36,11 +38,13 @@ $this->allow_to_msg       = $qs2["allow_to_msg"];
 
 
 
-/*
-function user_set(){
+
+public function user_set(){
 $sid = $_SESSION['sid'];
-$UsSet             = mysql_query("SELECT * FROM blog_users WHERE id='$sid' ORDER BY id desc limit 1");
-$UsSet2            = mysql_fetch_array($UsSet);
+
+global $condb;
+$UsSet             = $condb->query("SELECT * FROM blog_users WHERE id='1'");
+$UsSet2            = $UsSet->fetch_array(MYSQLI_ASSOC);
 
 $this->usEmail           = $UsSet2["email"];
 $this->usPassword        = $UsSet2["password"];
@@ -50,7 +54,7 @@ $this->usState           = $UsSet2["state"];
 $this->usRank            = $UsSet2["rank"];
 
 }
-*/
+
 
 
 

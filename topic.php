@@ -22,10 +22,9 @@ $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
 
 ///add viw+
-mysql_query("UPDATE topics SET viw=viw+1 WHERE id=$gid ");
-
-$qu1=mysql_query("SELECT title,cat,post,comnum,date,thumb,author,type FROM topics WHERE id=$gid ");
-$qu2=mysql_fetch_array($qu1);
+$condb->query("UPDATE topics SET viw=viw+1 WHERE id=$gid ");
+$Get_class->qufu("title,cat,post,comnum,date,thumb,author,type","topics","WHERE id='$gid' ");
+foreach($Get_class->queryArray as $key=>$qu2){
 $ti = strip_tags($qu2['title']);
 $comnum = $qu2['comnum'];
 $remove_editable_tag='contenteditable="true"';
@@ -61,6 +60,8 @@ echo"
 $po
 </div>
 ";
+}
+unset($Get_class->queryArray);
 
 if(empty($ty) OR $ty=0){
 echo"
@@ -74,14 +75,14 @@ echo"
 
 <div class='related_posts black_link'>
 <div class='under_title'>مقالات اخري مرتبطة بـ $ti<img src='img/overlaping.png' /></div>";
+$Get_class->qufu("*","topics","WHERE status='1' ORDER By rand() LIMIT 3");
+foreach($Get_class->queryArray as $key=>$related_posts){
 
-$Get_class->po("*","id!='' && status='1' ORDER By rand() LIMIT 3","dont_show_pages");
-foreach($Get_class->PostsArray as $key=>$related_posts){
 $related_posts_id = $related_posts["id"];
 $related_posts_title = $related_posts["title"];
 $related_posts_thumb = $related_posts["thumb"];
 $related_posts_thumb = $related_posts["thumb"];
-$related_posts_link  = $allset->blog_links("article","ar",$related_posts_id,$related_posts_title);
+$related_posts_link  = $Get_class->blog_links("article","ar",$related_posts_id,$related_posts_title);
 
 echo"
 <a href='$related_posts_link'>
@@ -92,6 +93,7 @@ echo"
 </a>
 ";
 }
+unset($Get_class->queryArray);
 
 
 if($allset->allow_comments=="0"){

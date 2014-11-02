@@ -5,12 +5,12 @@ $url_of_page = explode('/',$_SERVER['REQUEST_URI']);
 if (in_array('article', $url_of_page)){
 echo"<div class='sidebar_cel' style='border-bottom:10px solid #F3F3F0;'>";
 
-
-$q1 = mysql_query("SELECT about,name,email FROM blog_users WHERE id='$au' ");
-$q2 = mysql_fetch_array($q1);
+$Get_class->qufu("about,name,email","blog_users","WHERE id='$au' limit 1");
+foreach($Get_class->queryArray as $key=>$q2){
 $about =  $q2["about"];
 $name  =  $q2["name"];
 $gravatar_link = 'http://www.gravatar.com/avatar/' . md5($q2["email"]) . '?s=150';
+
 echo"
 <div class='auther_box'>
 <div class='auther_box_thumb' style='background-image:url($gravatar_link);' ></div>
@@ -27,6 +27,7 @@ echo"
 <a href='https://twitter.com/MonazemDotCom' ><div class='sidebar_flow'  ><img src='img/social/twitter.png' /></br> تويتر </div></a>
 <a href='https://plus.google.com/103479011791322422061' ><div class='sidebar_flow'  ><img src='img/social/google.png' /></br> قوقل بلس </div></a>
 </div>";
+}
 
 /*
 echo"

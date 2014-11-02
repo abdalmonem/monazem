@@ -1,5 +1,6 @@
 ﻿<?php
 SESSION_START();
+
 include "../../config.php";
 $d = time();
 $rand_image_title = $d.rand("1","9999").".png";
@@ -80,6 +81,8 @@ unlink("../".$remove_img_link);
 
 
 if(isset($_GET["action"]) && $_GET["action"]=="changethumb"){
+$formname_attr = $_GET["form_name_attr"];
+
 
 if(!file_exists("../../thumbs/$year")){
 mkdir("../../thumbs/$year");
@@ -88,13 +91,12 @@ if(!file_exists("../../thumbs/$year/$month")){
 mkdir("../../thumbs/$year/$month");
 }
 
-unlink("../../".$_POST["old_thumb"]);
+@unlink("../../".$_GET["old_thumb"]);
 
 
 $filename = "thumbs/".$year."/".$month."/".$image_title_withou_extintion.str_replace(" ", "_",$_FILES[$formname_attr]["name"]);
 if(move_uploaded_file($_FILES[$formname_attr]["tmp_name"],"../../".$filename)){
 echo $filename;
-
 }
 }
 
